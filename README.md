@@ -2,6 +2,25 @@
 
 Self-organizing maps in Python. It's not yet ready for use, but you'll be able to create, train and query self-organizing maps via command-line.
 
+<pre>
+from som import SOM
+from distance_functions import euclidean
+from neighbourhood_functions import mexican_hat_with_sigma
+from fill_functions import random_fill
+
+som = SOM(n = 4, dimensions = 5, fill = random_fill)
+
+samples = [[random.gauss(m, 0.1) for e in range(0, 5)] 
+    for m in range(0, 20) 
+    for sample in range(0,10)]
+
+for sample in samples:
+    mh = mexican_hat_with_sigma(1.0)
+    som.train(target = sample, rate = 1, distance = euclidean, nf = mh)
+
+print som.get_matrix()
+</pre>
+
 ## License 
 
 This file is part of hclu.
