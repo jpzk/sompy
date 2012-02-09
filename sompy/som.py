@@ -1,14 +1,14 @@
 """
 This file is part of sompy.
 
-hclu is free software: you can redistribute it and/or modify
+somply is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-hclu is distributed in the hope that it will be useful,
+sompy is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
@@ -43,6 +43,13 @@ class SOM:
             self._adjust_weights(\
             self.matrix, winner_node, target, rate, nf)    
     
+    # \brief query the SOM with a given target
+    # \param target query target vector
+    # \param distance distance function
+    # \return winner node tuple with i, j and distance
+    def query(self, target, distance):
+        return self._winner(self.matrix, target, distance)
+
     # \brief retrieve the weight matrix
     def get_matrix(self):
         return self.matrix
