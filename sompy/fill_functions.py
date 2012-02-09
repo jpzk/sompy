@@ -1,10 +1,5 @@
-# sompy
-
-Self-organizing maps in Python. It's not yet ready for use, but you'll be able to create, train and query self-organizing maps via command-line.
-
-## License 
-
-This file is part of hclu.
+"""
+This file is part of sompy.
 
 hclu is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,6 +12,9 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with hclu.  If not, see <http://www.gnu.org/licenses/>.
+along with sompy. If not, see <http://www.gnu.org/licenses/>.
+"""
 
+import random
 
+def random_fill(i,j): return random.random()
