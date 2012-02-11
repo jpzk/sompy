@@ -36,6 +36,6 @@ for sample in samples:
 # query
 for sample in samples:
     winner = som.query(target = sample, distance = euclidean)
-    print winner
+    print(winner)
 
 

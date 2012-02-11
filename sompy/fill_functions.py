@@ -15,6 +15,6 @@ You should have received a copy of the GNU General Public License
 along with sompy. If not, see <http://www.gnu.org/licenses/>.
 """
 
-import random
-
-def random_fill(i,j): return random.random()
+from random import random
+ 
+def random_fill(i,j): return random()

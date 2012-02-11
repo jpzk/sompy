@@ -15,13 +15,14 @@ You should have received a copy of the GNU General Public License
 along with sompy. If not, see <http://www.gnu.org/licenses/>.
 """
 
-import math
+from math import sqrt
+from functools import reduce
 
 # \brief euclidean distance time complexity: O(N), N is dimension of x,y.
 # \author Jendrik Poloczek <jendrik.poloczek@uni-oldenburg.de>
 # \return euclidean distance
 def euclidean(x, y): 
-    return math.sqrt(reduce(lambda x, y: x + y, 
+    return sqrt(reduce(lambda x, y: x + y, 
         [(xi - yi) ** 2 for (xi, yi) in zip(x, y)]))
 
 # \brief manhatten distance also known as city-block metric or

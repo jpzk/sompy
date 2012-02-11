@@ -15,8 +15,7 @@ You should have received a copy of the GNU General Public License
 along with sompy. If not, see <http://www.gnu.org/licenses/>.
 """
 
-import random
-import math
+from functools import reduce
 
 # \brief This class represents a toolbox for self-organizing maps
 # \author Jendrik Poloczek <jendrik.poloczek@uni-oldenburg.de>
