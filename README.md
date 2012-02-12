@@ -21,7 +21,7 @@ samples = [[random.gauss(m, 0.1) for e in range(0, 5)]
 </pre>
 
 The samples are pseudo random numbers with gauss distribution. We sample 10 times 20 gauss distributions with an 
-expected ed value of 0,1,2...20. Variance is 0.1 for each distribution. 
+expected value of 0,1,2...20. Variance is 0.1 for each distribution. 
 
 ### Training
 We train our SOM by using a for-loop iterating over the samples and train each sample as a target with a given learn-rate, 
