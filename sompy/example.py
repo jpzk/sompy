@@ -19,6 +19,7 @@ import random
 
 from som import SOM
 from distance_functions import euclidean
+from damping_functions import exponentional_damping
 from neighbourhood_functions import mexican_hat_with_sigma
 from fill_functions import random_fill
 
@@ -29,9 +30,23 @@ samples = [[random.gauss(m, 0.1) for e in range(0, 5)]
     for sample in range(0,10)]
 
 # training
-for sample in samples:
-    mh = mexican_hat_with_sigma(1.0)
-    som.train(target = sample, rate = 1, distance = euclidean, nf = mh)
+for index in range(0, len(samples)):
+
+    # learn_rate as a factor of how much the weight vectors are 
+    # pulled to the target vector. 
+    learn_rate = exponentional_damping(\
+        start = 1.0, end = 0.1,\
+        t = float(index), tmax = len(samples)) 
+
+    # sigma influences neighbourhood radius
+    sigma = exponentional_damping(\
+        start = 1.0, end = 0.1,\
+        t = float(index), tmax = len(samples))
+
+    mh = mexican_hat_with_sigma(sigma)
+
+    som.train(target = samples[index], rate = learn_rate, 
+        distance = euclidean, nf = mh)
 
 # query
 for sample in samples:
