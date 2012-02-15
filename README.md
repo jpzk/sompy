@@ -32,15 +32,8 @@ We train our SOM by using a for-loop iterating over the samples and train each s
 
 <pre>
 for index in range(0, len(samples)):
-
-    learn_rate = exponentional_damping(\
-        start = 1.0, end = 0.1,\
-        t = float(index), tmax = len(samples)) 
-
-    sigma = exponentional_damping(\
-        start = 1.0, end = 0.1,\
-        t = float(index), tmax = len(samples))
-
+    learn_rate = exponentional_damping(start = 1.0, end = 0.1, t = float(index), tmax = len(samples)) 
+    sigma = exponentional_damping(start = 1.0, end = 0.1, t = float(index), tmax = len(samples))
     mh = mexican_hat_with_sigma(sigma)
 
     som.train(target = samples[index], rate = learn_rate, 
