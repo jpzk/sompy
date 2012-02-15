@@ -24,11 +24,8 @@ samples = [[random.gauss(m, 0.1) for e in range(0, 5)]
 
 The samples are pseudo random numbers with gauss distribution. We sample 10 times 20 gauss distributions with an expected value of 0,1,2...20. Variance is 0.1 for each distribution. 
 
-
 ### Training
 We train our SOM by using a for-loop iterating over the samples and train each sample as a target with a given learn-rate, distance and neighbourhood function. The learn-rate is a factor of how much the weight vectors of nodes are pulled to the sample vector. The learn-rate is given by a exponentional damping function with a start, end, t, tmax parameters. As the index of the sample to train increases the learn-rate decreases. 
-
-
 
 <pre>
 for index in range(0, len(samples)):
@@ -36,16 +33,14 @@ for index in range(0, len(samples)):
     sigma = exponentional_damping(start = 1.0, end = 0.1, t = float(index), tmax = len(samples))
     mh = mexican_hat_with_sigma(sigma)
 
-    som.train(target = samples[index], rate = learn_rate, 
-        distance = euclidean, nf = mh)
+    som.train(target = samples[index], rate = learn_rate, distance = euclidean, nf = mh)
 </pre>
 
-The neighbourhood function in this example is named mexican hat function. The parameter sigma of this function influences the radius of neighbourhood. Keep in mind, that the mexican hat function is continuous. See files the files distance_functions and neighbourhood_functions and damping_functions for available functions to experiment with. If you want to inspect the weight matrix, you're able to retrieve the weight matrix by calling get_matrix().
+The neighbourhood function in this example is named mexican hat function. The parameter sigma of this function influences the radius of neighbourhood. Keep in mind, that the mexican hat function is continuous. See the files distance_functions and neighbourhood_functions and damping_functions for available functions to experiment with. If you want to inspect the weight matrix, you're able to retrieve the weight matrix by calling get_matrix().
 
 ### Query
 
-Allright, lets query the trained SOM. The query method needs a given target and distance function to determine the winner
-node in the SOM. The returned value is a tuple which consists of i, j indices of the winner node and distance to target.
+Allright, lets query the trained SOM. The query method needs a given target and distance function to determine the winner node in the SOM. The returned value is a tuple which consists of i, j indices of the winner node and distance to target.
 
 <pre>
 for sample in samples:
